@@ -183,88 +183,18 @@ Para esto existe dos forma, la primera es instalando los packages por terminal y
 
 1. Instala los siguientes packegs desde tu terminal ejecutando los siguientes scripts en la raiz del proyecto ```Arquetipo.Api```:
 
-* [```Microsoft.AspNetCore.Mvc.Versioning```](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) : Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
+* ```Microsoft.AspNetCore.Mvc.Versioning```: Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
+```C#
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning
+```
+
+* ```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer``` : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
 
 ```C#
-dotnet add package Microsoft.AspNetCore.Mvc.Versioning --version 5.0.0
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
 ```
 
-* [```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer```](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer) : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
-
-```C#
-dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer --version 5.0.0
-```
-
-* [```Microsoft.Extensions.Logging.EventLog```](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/) : Este paquete proporciona un ```proveedor de registro``` para el ```registro de eventos de Windows```. Permite a las aplicaciones de ```.NET Core``` registrar eventos en el ```registro de eventos de Windows```. Para instalar ejecute el siguiente script:
-
-```C#
-dotnet add package Microsoft.Extensions.Logging.EventLog --version 7.0.0
-```
-
-* [```NLog.Web.AspNetCore```](https://www.nuget.org/packages/NLog.Web.AspNetCore) : ```NLog``` es un popular marco de registro para ```.NET```. Este paquete proporciona integración entre ```NLog``` y ```ASP.NET Core```, lo que facilita el uso de ```NLog``` en aplicaciones ```web``` de ```.NET Core```. Para instalar ejecute el siguiente script:
-
-```C#
-dotnet add package NLog.Web.AspNetCore --version 5.2.2
-```
-
-* [```Swashbuckle.AspNetCore```](https://www.nuget.org/packages/Swashbuckle.AspNetCore#supportedframeworks-body-tab) : ```Swashbuckle``` es una herramienta que genera automáticamente ```documentación de API``` y ```UI de Swagger``` para aplicaciones ```web API``` de ```ASP.NET Core```. Facilita la exploración y el consumo de las ```APIs``` por parte de otros desarrolladores. Para instalar ejecute el siguiente script:
-
-```C#
-dotnet add package Swashbuckle.AspNetCore --version 6.2.3
-```
-
-* [```Microsoft.AspNetCore.Authentication.JwtBearer```](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0-preview.2.23153.2) : Este paquete proporciona ```middleware``` para la autenticación de ```tokens JWT``` (```JSON Web Tokens```) en aplicaciones web de ```.NET Core```. Facilita la implementación de la autenticación basada en ```tokens JWT``` en la ```API```. Para instalar ejecute el siguiente script:
-
-```C#
-dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.0
-```
-
-```nota```: las versiones packeges utilizadas en este documento son lastest por ende existe la posibilidad que pueden variar cuando lea este documento.
-
-2. Abra el archivo ```Arquetipo.Api.csproj``` y agregue las siguientes referencias de ```packages``` al proyecto dentro de la etiqueta ```<ItemGroup>``` y ```"Guarde"``` los cambios realizados en el archivo.
-
-```XML
-<ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
-  </ItemGroup>
-```
-
-* Su realizo la forma 1 o la 2, eL archivo ```Arquetipo.Api.csproj``` deberia verse de la suiguiente manera:
-
-```XML
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Arquetipo.Api</RootNamespace>
-    <Nullable>disable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
-  </ItemGroup>
-
-</Project>
-```
-
-* Para finalizar ejecute el siguiente ```script``` en la ```terminal ```en la ruta base del proyecto o solucion, asi restaurar e instalar los packages ```nugguets```:
-
-```C#
-dotnet restore
-```
+*
 
 ## Agregar Clase Seguridad ```HeaderValidationAttribute```
 
