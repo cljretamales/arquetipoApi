@@ -427,50 +427,82 @@ namespace Arquetipo.Api.Configuration;
 // para configurar las opciones de SwaggerGen en una aplicación ASP.NET Core.
 public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
 {
-    private readonly IApiVersionDescriptionProvider _provider;
+  private readonly IApiVersionDescriptionProvider _provider;
 
-    // El constructor recibe un objeto IApiVersionDescriptionProvider para obtener información
-    // sobre las versiones de la API.
-    public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider)
+  // El constructor recibe un objeto IApiVersionDescriptionProvider para obtener información
+  // sobre las versiones de la API.
+  public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider)
+  {
+    _provider = provider;
+  }
+
+  // El método Configure se utiliza para configurar las opciones de SwaggerGen.
+  public void Configure(SwaggerGenOptions options)
+  {
+    // Configurar la definición de seguridad para el esquema Bearer JWT.
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
-        _provider = provider;
+      Name = "Authorization",
+      Type = SecuritySchemeType.ApiKey,
+      Scheme = "Bearer",
+      BearerFormat = "JWT",
+      In = ParameterLocation.Header,
+      Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+    });
+
+    // Agregar el requisito de seguridad para el esquema Bearer JWT.
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+      {
+        new OpenApiSecurityScheme
+          {
+            Reference = new OpenApiReference
+              {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+              }
+          },
+          Array.Empty<string>()
+      }
+    });
+
+    // Generar documentos de Swagger para cada versión de la API.
+    foreach (var description in _provider.ApiVersionDescriptions)
+    {
+      options.SwaggerDoc(
+        description.GroupName,
+        CreateVersionInfo(description));
+
+      var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+      var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+      options.IncludeXmlComments(xmlPath);
     }
 
-    // El método Configure se utiliza para configurar las opciones de SwaggerGen.
-    public void Configure(SwaggerGenOptions options)
+  }
+
+  // Este método sobrecargado permite configurar las opciones de SwaggerGen con un nombre específico.
+  public void Configure(string name, SwaggerGenOptions options)
+  {
+    Configure(options);
+  }
+
+  // Este método privado crea un objeto OpenApiInfo a partir de una descripción de versión de API.
+  private static OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
+  {
+    var info = new OpenApiInfo()
     {
-        // Configurar la definición de seguridad para el esquema Bearer JWT.
-        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-        {
-            // ...
-        });
+      Title = "Arquetipo Api",
+      Version = description.ApiVersion.ToString()
+    };
 
-        // Agregar el requisito de seguridad para el esquema Bearer JWT.
-        options.AddSecurityRequirement(new OpenApiSecurityRequirement
-        {
-            // ...
-        });
-
-        // Generar documentos de Swagger para cada versión de la API.
-        foreach (var description in _provider.ApiVersionDescriptions)
-        {
-            // ...
-        }
+    if (description.IsDeprecated)
+    {
+      info.Description += " This API version has been deprecated.";
     }
 
-    // Este método sobrecargado permite configurar las opciones de SwaggerGen con un nombre específico.
-    public void Configure(string name, SwaggerGenOptions options)
-    {
-        Configure(options);
-    }
-
-    // Este método privado crea un objeto OpenApiInfo a partir de una descripción de versión de API.
-    private static OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
-    {
-        // ...
-    }
+    return info;
+  }
 }
-
 ```
 * **```nota```** : la configuración es desde el archico ```Startup.cs``` que veremos en los siguientes pasos.
 
