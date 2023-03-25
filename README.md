@@ -10,7 +10,7 @@
 1. [Requisitos Previos](#requisitos-previos)
 2. [Creación Proyecto WebApi Clean](#creación-proyecto-webapi-clean)
 3. [Distribución Carpetas en Arquetipo.Api](#distribución-carpetas-arquetipo-api)
-4. [Configuracion Proyecto Arquetipo Api csproj](#configuracion-proyecto-arquetipo-api-csproj)
+4. [Configuracion Proyecto Arquetipo.Api.csproj](#configuracion-proyecto-arquetipo-api-csproj)
 5. [Agregar Clase Seguridad HeaderValidationAttribute](#agregar-clase-seguridad-headervalidationattribute)
 
 ***
@@ -158,7 +158,7 @@ Arquetipo
 
 ## Configuracion Proyecto ```Arquetipo Api csproj```
 
-Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en el archivo ```Arquetipo.Api.csproj``` y luego debe ```"Guargar"``` los cambios ingresados en el archivo ```*.csproj```:
+Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en el archivo ```Arquetipo.Api.csproj``` y luego ```"Guarde"``` los cambios ingresados en el archivo ```*.csproj```:
 
 ```XML
 <PropertyGroup>
@@ -176,6 +176,25 @@ Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en
 * ```Nullable``` : Indica que las anotaciones de ```referencia nula``` están ```deshabilitadas```.
 * ```ImplicitUsings``` : Habilita los ```"usings"``` implícitos en el proyecto.
 * ```GenerateDocumentationFile``` : Indica que el compilador generará un archivo de ```documentación XML``` para el proyecto. Este archivo contiene información sobre las ```clases```, ```métodos``` y ```propiedades``` del ```Arquetipo.Api```, basada en los ```comentarios``` del código. Es ```"REQUERIDO"``` para la ```Documentacion de los EnPoints``` del ```Arquetipo.Api``` en ```Swagger```.
+* ```NoWarn``` : Suprime las advertencias del compilador asociadas con el código de advertencia ```CS1591```. La advertencia se produce cuando los elementos públicos o protegidos del código ```no tienen``` comentarios de ```documentación XML```.
+
+A Continuacón se deben agregar los ```packages``` de ```Nugget``` que necesita el proyecto para su correcto funcionamiento.
+Para esto existe dos forma, la primera es instalando los packages por terminal y la otra es modificando el archivo ```Arquetipo.Api.csproj```.
+
+1. Instala los siguientes packegs desde tu terminal ejecutando los siguientes scripts en la raiz del proyecto ```Arquetipo.Api```:
+
+* ```Microsoft.AspNetCore.Mvc.Versioning```: Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
+```C#
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning
+```
+
+* ```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer``` : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
+
+```C#
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
+```
+
+*
 
 ## Agregar Clase Seguridad ```HeaderValidationAttribute```
 
