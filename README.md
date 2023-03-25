@@ -11,10 +11,10 @@
 2. [Creación Proyecto WebApi Clean](#creación-proyecto-webapi-clean)
 3. [Distribución Carpetas en Arquetipo.Api](#distribución-carpetas-arquetipo-api)
 4. [Configuracion Proyecto Arquetipo.Api.csproj](#configuracion-proyecto-arquetipo-api-csproj)
-5. [Agregar Clase Seguridad HeaderValidationAttribute](#agregar-clase-seguridad-headervalidationattribute)
+5. [Agregar Archivo Seguridad HeaderValidationAttribute](#agregar-archivo-seguridad-headerValidationAttribute)
 
 ***
-## ```Requisitos Previos```
+## **```Requisitos Previos```**
 
 Para crear una Web API en .NET Core 6 en Windows, debes cumplir con los siguientes requisitos previos:
 
@@ -26,7 +26,7 @@ Para crear una Web API en .NET Core 6 en Windows, debes cumplir con los siguient
     También deberás instalar la ```extensión "C#"``` para obtener soporte para el ```lenguaje C#``` y las herramientas de ```.NET```: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 
 ***
-## ```Creación Proyecto WebApi Clean```
+## **```Creación Proyecto WebApi Clean```**
 
 Abra la terminal (```línea de comandos```, ```PowerShell```, etc.) y navegue hasta la carpeta donde desea crear la solución y los proyectos.
 
@@ -76,11 +76,11 @@ cd ..
 Siguiendo estos pasos, se creará una solución con tres proyectos: ```Arquetipo.Api``` (Web API), ```Arquetipo.Tests``` (pruebas unitarias con xUnit) y ```Arquetipo.IntegrationTests``` (pruebas de integración con xUnit). Además, se establecerán las relaciones entre los proyectos, permitiendo a los desarrolladores ejecutar pruebas que dependen del proyecto Web API.
 
 ***
-## Distribución Carpetas ```Arquetipo Api```
+## **Distribución Carpetas ```Arquetipo Api```**
 
 En el siguiente esquema se muestra la distribución de ```carpetas``` y ```namespaces``` para un proyecto ```Web API``` en ```.Net6```
 
-Aca encontraras la definicion y la funcionalidad de la palabra reservada [namespace](https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/language-specification/namespaces)
+Aca encontraras la definicion y la funcionalidad de la palabra reservada [**namespace**](https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/language-specification/namespaces)
 
 ```C++
 Arquetipo
@@ -156,9 +156,9 @@ Arquetipo
 ```
 ***
 
-## Configuracion Proyecto ```Arquetipo Api csproj```
+## **Configuracion Proyecto ```Arquetipo Api csproj```**
 
-Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en el archivo ```Arquetipo.Api.csproj``` y luego ```"Guarde"``` los cambios ingresados en el archivo ```*.csproj```:
+Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en el archivo ```Arquetipo.Api.csproj``` y luego **```"Guarde"```** los cambios ingresados en el archivo ```*.csproj```:
 
 ```XML
 <PropertyGroup>
@@ -171,11 +171,11 @@ Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en
 </PropertyGroup>
 ```
 
-* ```TargetFramework``` : Especifica la versión de ```.NET``` que se utilizará para ```compilar``` y ```ejecutar``` el proyecto
-* ```RootNamespace``` : Define el espacio de nombres raíz predeterminado para el proyecto.
-* ```Nullable``` : Indica que las anotaciones de ```referencia nula``` están ```deshabilitadas```.
-* ```ImplicitUsings``` : Habilita los ```"usings"``` implícitos en el proyecto.
-* ```GenerateDocumentationFile``` : Indica que el compilador generará un archivo de ```documentación XML``` para el proyecto. Este archivo contiene información sobre las ```clases```, ```métodos``` y ```propiedades``` del ```Arquetipo.Api```, basada en los ```comentarios``` del código. Es ```"REQUERIDO"``` para la ```Documentacion de los EnPoints``` del ```Arquetipo.Api``` en ```Swagger```.
+* **```TargetFramework```** : Especifica la versión de ```.NET``` que se utilizará para ```compilar``` y ```ejecutar``` el proyecto
+* **```RootNamespace```** : Define el espacio de nombres raíz predeterminado para el proyecto.
+* **```Nullable```** : Indica que las anotaciones de ```referencia nula``` están ```deshabilitadas```.
+* **```ImplicitUsings```** : Habilita los ```"usings"``` implícitos en el proyecto.
+* **```GenerateDocumentationFile```** : Indica que el compilador generará un archivo de ```documentación XML``` para el proyecto. Este archivo contiene información sobre las ```clases```, ```métodos``` y ```propiedades``` del ```Arquetipo.Api```, basada en los ```comentarios``` del código. Es **```"REQUERIDO"```** para la ```Documentacion de los EnPoints``` del ```Arquetipo.Api``` en ```Swagger```.
 * ```NoWarn``` : Suprime las advertencias del compilador asociadas con el código de advertencia ```CS1591```. La advertencia se produce cuando los elementos públicos o protegidos del código ```no tienen``` comentarios de ```documentación XML```.
 
 A Continuacón se deben agregar los ```packages``` de ```Nugget``` que necesita el proyecto para su correcto funcionamiento.
@@ -183,23 +183,296 @@ Para esto existe dos forma, la primera es instalando los packages por terminal y
 
 1. Instala los siguientes packegs desde tu terminal ejecutando los siguientes scripts en la raiz del proyecto ```Arquetipo.Api```:
 
-* ```Microsoft.AspNetCore.Mvc.Versioning```: Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
-```C#
-dotnet add package Microsoft.AspNetCore.Mvc.Versioning
-```
-
-* ```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer``` : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
+* [**```Microsoft.AspNetCore.Mvc.Versioning```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) : Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
 
 ```C#
-dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning --version 5.0.0
 ```
 
-*
+* [**```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer) : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
 
-## Agregar Clase Seguridad ```HeaderValidationAttribute```
+```C#
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer --version 5.0.0
+```
 
-Para validar en
+* [**```Microsoft.Extensions.Logging.EventLog```**](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/) : Este paquete proporciona un ```proveedor de registro``` para el ```registro de eventos de Windows```. Permite a las aplicaciones de ```.NET Core``` registrar eventos en el ```registro de eventos de Windows```. Para instalar ejecute el siguiente script:
 
+```C#
+dotnet add package Microsoft.Extensions.Logging.EventLog --version 7.0.0
+```
+
+* [**```NLog.Web.AspNetCore```**](https://www.nuget.org/packages/NLog.Web.AspNetCore) : ```NLog``` es un popular marco de registro para ```.NET```. Este paquete proporciona integración entre ```NLog``` y ```ASP.NET Core```, lo que facilita el uso de ```NLog``` en aplicaciones ```web``` de ```.NET Core```. Para instalar ejecute el siguiente script:
+
+```C#
+dotnet add package NLog.Web.AspNetCore --version 5.2.2
+```
+
+* [**```Swashbuckle.AspNetCore```**](https://www.nuget.org/packages/Swashbuckle.AspNetCore#supportedframeworks-body-tab) : ```Swashbuckle``` es una herramienta que genera automáticamente ```documentación de API``` y ```UI de Swagger``` para aplicaciones ```web API``` de ```ASP.NET Core```. Facilita la exploración y el consumo de las ```APIs``` por parte de otros desarrolladores. Para instalar ejecute el siguiente script:
+
+```C#
+dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+```
+
+* [**```Microsoft.AspNetCore.Authentication.JwtBearer```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0-preview.2.23153.2) : Este paquete proporciona ```middleware``` para la autenticación de ```tokens JWT``` (```JSON Web Tokens```) en aplicaciones web de ```.NET Core```. Facilita la implementación de la autenticación basada en ```tokens JWT``` en la ```API```. Para instalar ejecute el siguiente script:
+
+```C#
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.0
+```
+
+**```nota```**: las versiones packages utilizadas en este documento son lastest por ende existe la posibilidad que pueden variar cuando lea este documento.
+
+2. Abra el archivo ```Arquetipo.Api.csproj``` y agregue las siguientes referencias de ```packages``` al proyecto dentro de la etiqueta ```<ItemGroup>``` y ```"Guarde"``` los cambios realizados en el archivo.
+
+```XML
+<ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+  </ItemGroup>
+```
+
+* Si realizo los pasos de forma corercta en el punto anterior 1 o 2, eL archivo ```Arquetipo.Api.csproj``` deberia verse de la suiguiente manera:
+
+```XML
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Arquetipo.Api</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
+```
+
+* Para finalizar ejecute el siguiente ```script``` en la ```terminal ```de la ruta base donde se encuentra el proyecto (```*.csproj```) o solucion (```*.sln```), asi restaurar e instalar los packeges ```nugguets```:
+
+```C#
+dotnet restore
+```
+
+***
+
+## **Agregar Archivo Seguridad ```HeaderValidationAttribute```**
+
+Para **```segurizar```** los EndPoints debemos crear dentro de la carpeta ```Security``` (si no existe se debe crear) un archivo con el nombre **```"HeaderValidationAttribute.cs"```**, una vez creado agregue el siguiente codigo y **```"Guarde"```** los cambios :
+
+```C#
+// Importaciones de espacios de nombres necesarios
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+// Define un espacio de nombres personalizado
+namespace Arquetipo.Api.Security;
+
+// La clase HeaderValidationAttribute hereda de ActionFilterAttribute
+public class HeaderValidationAttribute : ActionFilterAttribute
+{
+    // Lista de nombres de encabezados requeridos
+    private readonly List<string> _headerNames;
+
+    // Constructor de la clase
+    public HeaderValidationAttribute()
+    {
+        // Carga los nombres de los encabezados requeridos desde una variable de entorno
+        // y los divide en una lista, eliminando espacios en blanco
+        var headersFromEnv = Environment.GetEnvironmentVariable("REQUIRED_HEADERS");
+        if (headersFromEnv != null)
+        {
+            _headerNames = headersFromEnv.Split(',').Select(h => h.Trim()).ToList();
+        }
+        else
+        {
+            _headerNames = new List<string>();
+        }
+
+    }
+
+    // Sobrescribe el método OnActionExecuting del filtro de acción
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        // Verifica si todos los encabezados requeridos están presentes en la solicitud
+        if (_headerNames.Count > 0 && !_headerNames.All(h => context.HttpContext.Request.Headers.ContainsKey(h)))
+        {
+            // Si falta alguno de los encabezados requeridos, devuelve un resultado de BadRequest
+            context.Result = new BadRequestObjectResult($"One or more required headers are missing.");
+            return;
+        }
+
+        // Valida que el encabezado "X-Custom-Header1" tenga el valor "resultado esperado"
+        if (context.HttpContext.Request.Headers.TryGetValue("X-Custom-Header1", out var customHeaderValue) && customHeaderValue != "resultado esperado")
+        {
+            context.Result = new BadRequestObjectResult($"The value of X-Custom-Header1 is not valid.");
+            return;
+        }
+
+        // Aquí puedes agregar más validaciones, si es necesario.
+
+        // Llama al método base OnActionExecuting
+        base.OnActionExecuting(context);
+    }
+}
+```
+A continuacion un ejemplo de implementacion en un ```Controller```.
+
+```C#
+using Microsoft.AspNetCore.Mvc;
+using Arquetipo.Api.Security; // Asegúrate de importar el espacio de nombres donde se encuentra el atributo
+
+namespace Arquetipo.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class MyController : ControllerBase
+{
+    // Aplica el atributo HeaderValidationAttribute al nivel del método
+    [HttpGet]
+    [HeaderValidation]
+    public IActionResult Get()
+    {
+        // ... lógica de tu acción GET
+        return Ok("Ejemplo de validación de encabezados.");
+    }
+
+    // También puedes aplicar el atributo a nivel de clase, lo que afectará a todos los métodos del controlador
+    // [HeaderValidation]
+
+    // Otros métodos del controlador...
+}
+```
+* En este ejemplo, el atributo ```HeaderValidation``` se aplica al método Get() del controlador. Cuando se realiza una solicitud a la ruta del método Get(), el filtro de acción ```HeaderValidationAttribute``` se ejecutará antes de que se ejecute el método, verificando la presencia de los encabezados requeridos en la ```solicitud HTTP```. Si alguno de los encabezados requeridos falta, se devolverá un resultado de ```BadRequest (400)```.
+
+* para las varable de ambiente se puede configura en el archivo appsettings.Development.json o launch.json en Visual Code :
+  1. ejemplo appsettings.json :
+
+    ```json
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft.AspNetCore": "Warning"
+        }
+      },
+      "AllowedHosts": "*",
+      "REQUIRED_HEADERS": "X-Custom-Header1, X-Custom-Header2"
+    }
+    ```
+
+  2. ejemplo launch.json:
+
+    ```json
+    {
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/net6.0/Arquetipo.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "REQUIRED_HEADERS": "X-Custom-Header1, X-Custom-Header2"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+      ]
+    }
+    ```
+***
+## Agrgar Archivo Configuracion ConfigureSwaggerOptions
+
+La clase ```ConfigureSwaggerOptions``` configura las opciones de ```SwaggerGen``` en una aplicación ```ASP.NET Core.``` A continuacion crea dentro de la carpeta **```"Configuration"```** el archivo ConfigureSwaggerOptions.cs
+
+Copia y guarda el siguiente codigo en el archivo ```ConfigureSwaggerOptions.cs```
+
+```C#
+using System.Reflection;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
+namespace Arquetipo.Api.Configuration;
+// La clase ConfigureSwaggerOptions implementa la interfaz IConfigureNamedOptions<SwaggerGenOptions>
+// para configurar las opciones de SwaggerGen en una aplicación ASP.NET Core.
+public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
+{
+    private readonly IApiVersionDescriptionProvider _provider;
+
+    // El constructor recibe un objeto IApiVersionDescriptionProvider para obtener información
+    // sobre las versiones de la API.
+    public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider)
+    {
+        _provider = provider;
+    }
+
+    // El método Configure se utiliza para configurar las opciones de SwaggerGen.
+    public void Configure(SwaggerGenOptions options)
+    {
+        // Configurar la definición de seguridad para el esquema Bearer JWT.
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+        {
+            // ...
+        });
+
+        // Agregar el requisito de seguridad para el esquema Bearer JWT.
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            // ...
+        });
+
+        // Generar documentos de Swagger para cada versión de la API.
+        foreach (var description in _provider.ApiVersionDescriptions)
+        {
+            // ...
+        }
+    }
+
+    // Este método sobrecargado permite configurar las opciones de SwaggerGen con un nombre específico.
+    public void Configure(string name, SwaggerGenOptions options)
+    {
+        Configure(options);
+    }
+
+    // Este método privado crea un objeto OpenApiInfo a partir de una descripción de versión de API.
+    private static OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
+    {
+        // ...
+    }
+}
+
+```
+* **```nota```** : la configuración es desde el archico ```Startup.cs``` que veremos en los siguientes pasos.
 
 # Configuración ```Program``` y Creación ```Startup```  #
 
