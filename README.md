@@ -18,25 +18,25 @@
 
 Para crear una Web API en .NET Core 6 en Windows, debes cumplir con los siguientes requisitos previos:
 
-1. Instalar ```.NET Core 6 SDK```: Debes instalar el ```.NET Core 6 SDK``` en tu máquina. Puedes descargarlo desde el sitio web oficial de .NET: https://dotnet.microsoft.com/download/dotnet/6.0. Asegúrate de seleccionar el instalador adecuado para tu versión de Windows (x64 o ARM64).
+1. **Instalar ```.NET Core 6 SDK```:** Debes instalar el ```.NET Core 6 SDK``` en tu máquina. Puedes descargarlo desde el sitio web oficial de .NET: https://dotnet.microsoft.com/download/dotnet/6.0. Asegúrate de seleccionar el instalador adecuado para tu versión de Windows (x64 o ARM64).
 
-2. Instalar ```Visual Studio Code```: Para desarrollar aplicaciones en ```.NET Core 6```, necesitarás un entorno de desarrollo. Puedes utilizar ```Visual Studio Code```., que es multiplataforma y más ligero que Visual Studio 2022. Descarga e instala desde la siguiente ubicación:
-    * Visual Studio Code: https://code.visualstudio.com/download
+2. **Instalar ```Visual Studio Code```:** Para desarrollar aplicaciones en ```.NET Core 6```, necesitarás un entorno de desarrollo. Puedes utilizar ```Visual Studio Code```, que es multiplataforma y más ligero que Visual Studio 2022. Descarga e instala desde la siguiente ubicación:
+    * **Visual Studio Code: https://code.visualstudio.com/download**
 
-    También deberás instalar la ```extensión "C#"``` para obtener soporte para el ```lenguaje C#``` y las herramientas de ```.NET```: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
+    También deberás instalar la **```extensión "C#"```** para obtener soporte para el ```lenguaje C#``` y las herramientas de ```.NET```: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 
 ***
 ## **```Creación Proyecto WebApi Clean```**
 
 Abra la terminal (```línea de comandos```, ```PowerShell```, etc.) y navegue hasta la carpeta donde desea crear la solución y los proyectos.
 
-Ejecute el siguiente comando para crear una nueva solución llamada ```Arquetipo```:
+* Ejecute el siguiente comando para crear una nueva solución llamada **```Arquetipo```**:
 
 ```C#
 dotnet new sln -n Arquetipo
 ```
 
-A continuación, cree tres carpetas para los proyectos:
+* A continuación, cree tres carpetas para los proyectos :
 
 ```C#
 mkdir Arquetipo.Api
@@ -44,7 +44,7 @@ mkdir Arquetipo.Tests
 mkdir Arquetipo.IntegrationTests
 ```
 
-Navegue a cada una de las carpetas recién creadas y cree los proyectos correspondientes:
+Navegue a cada una de las carpetas recién creadas y cree los proyectos correspondientes :
 
 ```C#
 cd Arquetipo.Api
@@ -60,7 +60,8 @@ dotnet new xunit -n Arquetipo.IntegrationTests
 cd ..
 ```
 
-Agregue los proyectos a la solución y establezca las relaciones entre ellos:
+Agregue los proyectos a la solución y establezca las relaciones entre ellos :
+
 ```C#
 dotnet sln Arquetipo.sln add Arquetipo.Api/Arquetipo.Api.csproj
 dotnet sln Arquetipo.sln add Arquetipo.Tests/Arquetipo.Tests.csproj
@@ -73,7 +74,7 @@ cd Arquetipo.IntegrationTests dotnet add reference ../Arquetipo.Api/Arquetipo.Ap
 cd ..
 ```
 
-Siguiendo estos pasos, se creará una solución con tres proyectos: ```Arquetipo.Api``` (Web API), ```Arquetipo.Tests``` (pruebas unitarias con xUnit) y ```Arquetipo.IntegrationTests``` (pruebas de integración con xUnit). Además, se establecerán las relaciones entre los proyectos, permitiendo a los desarrolladores ejecutar pruebas que dependen del proyecto Web API.
+Siguiendo estos pasos, se creará una solución con tres proyectos : **```"Arquetipo.Api.csproj"```** (Web API), **```"Arquetipo.Tests.csproj"```** (pruebas unitarias con xUnit) y **```"Arquetipo.IntegrationTests"```** (pruebas de integración con xUnit). Además, se establecerán las relaciones entre los proyectos, permitiendo ejecutar pruebas que dependen del proyecto ```Web API```.
 
 ***
 ## **Distribución Carpetas ```Arquetipo Api```**
@@ -178,10 +179,14 @@ Agruegue los siguientes elementos dentro de la etiqueta ```<PropertyGroup>``` en
 * **```GenerateDocumentationFile```** : Indica que el compilador generará un archivo de ```documentación XML``` para el proyecto. Este archivo contiene información sobre las ```clases```, ```métodos``` y ```propiedades``` del ```Arquetipo.Api```, basada en los ```comentarios``` del código. Es **```"REQUERIDO"```** para la ```Documentacion de los EnPoints``` del ```Arquetipo.Api``` en ```Swagger```.
 * ```NoWarn``` : Suprime las advertencias del compilador asociadas con el código de advertencia ```CS1591```. La advertencia se produce cuando los elementos públicos o protegidos del código ```no tienen``` comentarios de ```documentación XML```.
 
-A Continuacón se deben agregar los ```packages``` de ```Nugget``` que necesita el proyecto para su correcto funcionamiento.
+***
+
+A Continuacón se deben agregar  **```packages Nugget```** que necesita el proyecto para su correcto funcionamiento.
 Para esto existe dos forma, la primera es instalando los packages por terminal y la otra es modificando el archivo ```Arquetipo.Api.csproj```.
 
 1. Instala los siguientes packegs desde tu terminal ejecutando los siguientes scripts en la raiz del proyecto ```Arquetipo.Api```:
+
+***
 
 * [**```Microsoft.AspNetCore.Mvc.Versioning```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning/) : Este paquete proporciona funcionalidades de ```control de versiones``` para las ```API```. Permite manejar diferentes ```versiones``` de una ```API``` de manera más organizada y estructurada. Para instalar ejecute el siguiente script:
 
@@ -189,11 +194,15 @@ Para esto existe dos forma, la primera es instalando los packages por terminal y
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning --version 5.0.0
 ```
 
+***
+
 * [**```Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer) : Este paquete complementa al paquete de ```control de versiones``` mencionado anteriormente y proporciona compatibilidad con ```API Explorer``` para las ```API``` de ```ASP.NET Core``` con ```versionamiento```. Para instalar ejecute el siguiente script:
 
 ```C#
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer --version 5.0.0
 ```
+
+***
 
 * [**```Microsoft.Extensions.Logging.EventLog```**](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/) : Este paquete proporciona un ```proveedor de registro``` para el ```registro de eventos de Windows```. Permite a las aplicaciones de ```.NET Core``` registrar eventos en el ```registro de eventos de Windows```. Para instalar ejecute el siguiente script:
 
@@ -201,11 +210,15 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer --version 5.0
 dotnet add package Microsoft.Extensions.Logging.EventLog --version 7.0.0
 ```
 
+***
+
 * [**```NLog.Web.AspNetCore```**](https://www.nuget.org/packages/NLog.Web.AspNetCore) : ```NLog``` es un popular marco de registro para ```.NET```. Este paquete proporciona integración entre ```NLog``` y ```ASP.NET Core```, lo que facilita el uso de ```NLog``` en aplicaciones ```web``` de ```.NET Core```. Para instalar ejecute el siguiente script:
 
 ```C#
 dotnet add package NLog.Web.AspNetCore --version 5.2.2
 ```
+
+***
 
 * [**```Swashbuckle.AspNetCore```**](https://www.nuget.org/packages/Swashbuckle.AspNetCore#supportedframeworks-body-tab) : ```Swashbuckle``` es una herramienta que genera automáticamente ```documentación de API``` y ```UI de Swagger``` para aplicaciones ```web API``` de ```ASP.NET Core```. Facilita la exploración y el consumo de las ```APIs``` por parte de otros desarrolladores. Para instalar ejecute el siguiente script:
 
@@ -213,15 +226,20 @@ dotnet add package NLog.Web.AspNetCore --version 5.2.2
 dotnet add package Swashbuckle.AspNetCore --version 6.2.3
 ```
 
+***
+
 * [**```Microsoft.AspNetCore.Authentication.JwtBearer```**](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0-preview.2.23153.2) : Este paquete proporciona ```middleware``` para la autenticación de ```tokens JWT``` (```JSON Web Tokens```) en aplicaciones web de ```.NET Core```. Facilita la implementación de la autenticación basada en ```tokens JWT``` en la ```API```. Para instalar ejecute el siguiente script:
 
 ```C#
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.0
 ```
 
-**```nota```**: las versiones packages utilizadas en este documento son lastest por ende existe la posibilidad que pueden variar cuando lea este documento.
 
-2. Abra el archivo ```Arquetipo.Api.csproj``` y agregue las siguientes referencias de ```packages``` al proyecto dentro de la etiqueta ```<ItemGroup>``` y ```"Guarde"``` los cambios realizados en el archivo.
+**```Nota```**: las versiones packages utilizadas en este documento son **latest** por ende existe la posibilidad que pueden variar cuando lea este documento.
+
+***
+
+2. Abra el archivo **```Arquetipo.Api.csproj```** y agregue las siguientes referencias de ```packages``` al proyecto dentro de la etiqueta **```"<ItemGroup>"```** y ```"Guarde"``` los cambios realizados en el archivo.
 
 ```XML
 <ItemGroup>
@@ -234,7 +252,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.0
   </ItemGroup>
 ```
 
-* Si realizo los pasos de forma corercta en el punto anterior 1 o 2, eL archivo ```Arquetipo.Api.csproj``` deberia verse de la suiguiente manera:
+* Si realizo los pasos de forma corercta en el punto anterior 1 o 2, el archivo **```"Arquetipo.Api.csproj"```** deberia tener la suiguiente configuración:
 
 ```XML
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -355,10 +373,12 @@ public class MyController : ControllerBase
     // Otros métodos del controlador...
 }
 ```
+
 * En este ejemplo, el atributo ```HeaderValidation``` se aplica al método Get() del controlador. Cuando se realiza una solicitud a la ruta del método Get(), el filtro de acción ```HeaderValidationAttribute``` se ejecutará antes de que se ejecute el método, verificando la presencia de los encabezados requeridos en la ```solicitud HTTP```. Si alguno de los encabezados requeridos falta, se devolverá un resultado de ```BadRequest (400)```.
 
-* para las varable de ambiente se puede configura en el archivo appsettings.Development.json o launch.json en Visual Code :
-  1. ejemplo appsettings.json :
+* Las **variables de ambientes** se puede configurar en el archivo "appsettings.Development.json" o "launch.json" en Visual Code :
+
+  1. ejemplo **appsettings.json** :
 
     ```json
     {
@@ -373,7 +393,7 @@ public class MyController : ControllerBase
     }
     ```
 
-  2. ejemplo launch.json:
+  2. ejemplo **launch.json** :
 
     ```json
     {
@@ -411,7 +431,7 @@ public class MyController : ControllerBase
 ***
 ## Agrgar Archivo Configuracion ConfigureSwaggerOptions
 
-La clase ```ConfigureSwaggerOptions``` configura las opciones de ```SwaggerGen``` en una aplicación ```ASP.NET Core.``` A continuacion crea dentro de la carpeta **```"Configuration"```** el archivo ConfigureSwaggerOptions.cs
+La clase ```ConfigureSwaggerOptions``` configura las opciones de ```SwaggerGen``` en una aplicación ```ASP.NET Core.``` A continuacion crea dentro de la carpeta **```"Configuration"```** el archivo **ConfigureSwaggerOptions.cs**
 
 Copia y guarda el siguiente codigo en el archivo ```ConfigureSwaggerOptions.cs```
 
@@ -504,7 +524,7 @@ public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
   }
 }
 ```
-* **```nota```** : la configuración es desde el archico ```Startup.cs``` que veremos en los siguientes pasos.
+* **```nota```** : la configuración de esta ckase la haremos desde el archico **```Startup.cs```** que veremos en los siguientes pasos.
 
 # Configuración ```Program``` y Creación ```Startup```  #
 
@@ -516,33 +536,44 @@ using Microsoft.Extensions.Logging.EventLog;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using Arquetipo.MS;
+using BciSeguros.MS;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// Configuring the logging system
 builder.Host.ConfigureLogging((hostingContext, logging) =>
 {
     var environmentName = hostingContext.HostingEnvironment.EnvironmentName;
 
+    // Clear existing logging providers
     logging.ClearProviders();
 
+    // Check if the environment is "Development"
     if (environmentName.Equals("Development", StringComparison.OrdinalIgnoreCase))
     {
+        // Add Console logging provider
         logging.AddConsole();
+
+        // Add NLog logging provider with configuration from appsettings.json
         logging.AddNLog(hostingContext.Configuration.GetSection("NLog"));
-        // logging.AddEventLog(new EventLogSettings
-        // {
-        //     SourceName = "ArquetipoMs",
-        //     LogName = "ArquetipoMS"
-        // });
+
+        // Add EventLog logging provider with custom source and log names
+        logging.AddEventLog(new EventLogSettings
+        {
+            SourceName = "ArquetipoMs",
+            LogName = "ArquetipoMS"
+        });
     }
     else
     {
+        // Add Console logging provider
         logging.AddConsole();
-        logging.AddNLog(hostingContext.Configuration.GetSection("NLog"));
+
+        // Uncomment the following line to add NLog logging provider in non-development environments
+        // logging.AddNLog(hostingContext.Configuration.GetSection("NLog"));
     }
 });
 
@@ -558,13 +589,65 @@ startup.Configure(app, app.Environment, provider);
 
 app.Run();
 ```
-Implementaciones:
 
-* ```builder.Host.ConfigureLogging``` : implemtacion multiples clientes Log.
-* ```logging.ClearProviders()``` : limpia posibles clientes de Log.
-* ```logging.AddConsole();``` : se iniciliza cliente Log de Consola.
-* ```logging.AddNLog();``` : se iniciliza cliente Log NLog.
-* ```logging.AddNLog();``` : se iniciliza cliente Log NLog.
+* A continuación una descripción del código:
+
+1. Se crea un objeto builder de tipo WebApplication.Builder utilizando el método WebApplication.CreateBuilder(args).
+2. Se configura el registro mediante el método builder.Host.ConfigureLogging(). Se utiliza un delegado para configurar el registro en función del entorno de la aplicación. Si el entorno es "Development", se agregan los proveedores de registro de consola, NLog y EventLog. Si no, solo se agrega el registro de consola.
+3. Se crea una instancia de la clase Startup y se le pasa la configuración del constructor para su posterior configuración.
+4. Se llama al método startup.ConfigureServices(builder.Services) para configurar los servicios requeridos en la aplicación.
+5. Se construye la aplicación con el método app = builder.Build().
+6. Se obtiene el proveedor de descripción de versión de API utilizando app.Services.GetRequiredService<IApiVersionDescriptionProvider>().
+7. Se llama al método startup.Configure(app, app.Environment, provider) para configurar la aplicación, sus entornos y el proveedor de descripción de la versión de la API.
+8. Finalmente, se ejecuta la aplicación con app.Run().
+
+El código en sí es muy limpio y fácil de entender. La implementación del registro es flexible, ya que se basa en el entorno de la aplicación para decidir qué proveedores de registro usar. En este caso, se emplea el registro en consola, NLog y EventLog, lo que garantiza un registro detallado durante el desarrollo y un registro más simple en otros entornos.
+
+* La clase Startup se utiliza para configurar los servicios y la aplicación en sí.
+
+***
+
+* Ejemplo de configuración de NLog en el archivo appsettings.json.
+
+```json
+{
+  "NLog": {
+    "autoReload": true,
+    "throwConfigExceptions": true,
+    "internalLogLevel": "info",
+    "internalLogFile": "internal_logs/internal-nlog.txt",
+    "targets": {
+      "file": {
+        "type": "File",
+        "fileName": "logs/app-log-${shortdate}.log",
+        "layout": "${longdate} ${uppercase:${level}} ${logger} - ${message}${exception:format=tostring}",
+        "archiveAboveSize": 1048576,
+        "maxArchiveFiles": 7
+      }
+    },
+    "rules": [
+      {
+        "logger": "*.Controllers.*",
+        "minlevel": "Info",
+        "writeTo": "file"
+      },
+      {
+        "logger": "*.Handlers.*",
+        "minlevel": "Info",
+        "writeTo": "file"
+      },
+      {
+        "logger": "*.Repositories.*",
+        "minlevel": "Info",
+        "writeTo": "file"
+      }
+    ]
+  },
+
+  // ... other appsettings configurations
+}
+
+```
 
 ### Contribution guidelines ###
 
